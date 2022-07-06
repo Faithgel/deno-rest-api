@@ -8,4 +8,4 @@ app.use((ctx) => {
 });
 
 console.log(`Listening on port ${PORT}`);
-await app.listen({port: +PORT});
+await app.listen({hostname: "0.0.0.0" , port: +PORT});
