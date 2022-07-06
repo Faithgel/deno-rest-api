@@ -1,7 +1,10 @@
-import { serve } from "https://deno.land/std@0.114.0/http/server.ts"
+import { Application } from "https://deno.land/x/oak@v10.5.1/mod.ts";
 
-const port = parseInt(Deno.env.get("PORT") ?? "8000");
-serve(() => new Response("Choo Choo! Welcome to your Deno app\n"),
-      { addr: `:${port}` });
+const PORT = Deno.env.get("PORT") || "5000";
+const app = new Application();
 
-console.log(`http://localhost:${port}/`);
+app.use((ctx) => {
+      ctx.response.body = "Hello World!";
+});
+
+await app.listen({port: +PORT});
